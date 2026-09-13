@@ -1,37 +1,15 @@
-# "Username: bilal, Password: 1234 - ye demo login hai"
-# This is for learning purposes only. No real passwords have been used in this nor has any attempt been made to try it on any real system.
-print("\033[1;31m")
-print("""
-╔══════════════════════════════════════╗
-║                                      ║
-║          ☠  BILAL TERMINAL  ☠       ║
-║                                      ║
-║        ⚠  SECURE SYSTEM  ⚠          ║
-║                                      ║
-╚══════════════════════════════════════╝
-""")
-print("\033[1;32m        >>> SYSTEM READY <<<\033[0m")
+# Only education purpose
+import time
+GREEN = "\033[92m"; RED = "\033[91m"; YELLOW = "\033[93m"; RESET = "\033[0m"
+print(f"{RED}╔══[ INTRUDER ALERT SYSTEM ]══╗{RESET}")
+print(f"{YELLOW}║ {GREEN}BILAL TERMINAL - DAY 8{RESET}{YELLOW}      ║{RESET}")
+print(f"{YELLOW}║ {RED}MODE: SCAN // BLOCK{RESET}{YELLOW}          ║{RESET}")
+print(f"{RED}╚════════════════════════════╝{RESET}")
 print()
-correct_username = "bilal"
-user_pass = 1234
-attempts = 1
-while attempts <= 3:
-    input_username = input("Entar name: ")
-    user_pass = int(input("Entar pass: "))
-
-    if input_username == correct_username:
-        print (f"\033[1;3;32m username found {input_username} welcome\033[0m")
-
-        if user_pass == 1234:
-            print (f"\033[1;3;32m {user_pass} correct password login Successful\033[0m")
-            break
-        else:
-            print (f"\033[1;3;31m Wrong password attempts {attempts}/3 \033[0m")
-            attempts += 1
+users = ["bilal","admin","vijay","hacker","guest"]
+for name in users:
+    if name == "bilal" or name == "vijay":
+        print (f"\033[1;3;32m Access granted: {name} is trusted\033[0m")
     else:
-        print (f"\033[1;3;31m user not found attempts {attempts}/3 \033[0m")
-        attempts += 1
-print()
-if attempts == 4:
-    print ("\033[1;3;33m [!] Account Locked [!] \033[0m")
-
+        print (f"\033[1;3;31m[×]Intruder alert: {name} is blocked\033[0m") 
+        time.sleep(1)
