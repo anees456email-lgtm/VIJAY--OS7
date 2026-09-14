@@ -1,15 +1,15 @@
-# Day 9 - Even / Odd Filter with Continue
-# Challenge: 5 inputs, print only odd > 5, skip even with continue
-
-count = 1
-while count <= 5:
-    num = int(input("Enter num: "))
-
-    if num % 2 == 0:
-        print (f"\033[1;3;32m {num} \033[0m")
-        count += 1
-        continue
-
-    if num > 5:
-        print(f"\033[1;3;31m odd {num}\033[0m")
-    count += 1
+Y="\033[93m";R="\033[91m";B="\033[1m";W="\033[0m"
+print(f"""{B}{Y}
+ ╔══════════════════════════════╗
+ ║ {R}⚠️  Power of while ⚠️{Y}  ║
+ ║ {W}ACCESS DENIED = TRY HARDER{Y}  ║
+ ╚══════════════════════════════╝{W}
+""")
+print()
+while True:
+    user_input = input("Enter password: ")
+    if user_input == "bs313":
+        print (f"\033[1;3;4;32m[✓]Access granted {user_input}: correct password\033[0m")
+        break
+    else:
+        print ("\033[1;31m[×]wrong password access decline[×]\033[0m")
