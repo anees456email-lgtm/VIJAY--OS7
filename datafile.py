@@ -1,15 +1,12 @@
 # Only education purpose
-import time
-GREEN = "\033[92m"; RED = "\033[91m"; YELLOW = "\033[93m"; RESET = "\033[0m"
-print(f"{RED}╔══[ INTRUDER ALERT SYSTEM ]══╗{RESET}")
-print(f"{YELLOW}║ {GREEN}BILAL TERMINAL - DAY 8{RESET}{YELLOW}      ║{RESET}")
-print(f"{YELLOW}║ {RED}MODE: SCAN // BLOCK{RESET}{YELLOW}          ║{RESET}")
-print(f"{RED}╚════════════════════════════╝{RESET}")
-print()
-users = ["bilal","admin","vijay","hacker","guest"]
-for name in users:
-    if name == "bilal" or name == "vijay":
-        print (f"\033[1;3;32m Access granted: {name} is trusted\033[0m")
-    else:
-        print (f"\033[1;3;31m[×]Intruder alert: {name} is blocked\033[0m") 
-        time.sleep(1)
+# Python while loop challenge: Skip even numbers with continue, print only odd numbers > 5, ensure counter increases every round. Debugged indentation bug causing infinite loop on Termux.
+count = 1
+while count <= 5:
+    num = int(input("Enter num:"))
+    if num % 2 == 0:
+        print (f"\033[1;3;32m {num}\033[0m")
+        count += 1
+        continue
+    if num > 5:
+        print (f"\033[1;3;31m {num}\033[0m")
+    count += 1
