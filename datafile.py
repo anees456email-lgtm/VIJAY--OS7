@@ -1,3 +1,11 @@
-while True:
-    print ("\033[1;3;4;32mA,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z",end=" ")
+import time
+count = 1
+while count <= 5:
+    if count == 3:
+        print (f"\033[1;32m {count} Checkpoint\033[0m")
+    else:
+        print (f"\033[1;91m {count} Round\033[0m")
+    count += 1
+    time.sleep(1)
+print ("\033[1;93m Program Finished\033[0m")
 
