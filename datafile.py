@@ -1,20 +1,18 @@
 # this script does not target any real systems and was created solely for educational purposes.
 import time
+print ("--------------------------------------")
 print ("======================================")
-print ("\033[1;3;35m Dummy SSH Brute-Force Simulator Loop Control\033[0m")
+print ("\033[1;3;34m Dummy Web Directory Brute-Forcer While + For Combo\033[0m")
 print ("======================================")
+print ("--------------------------------------")
 print()
-secret_pin = "hunter777"
-attempts = 1
-while attempts <= 5:
-    pwd = input("Enter pin: ")
-    if pwd == "hunter777":
-        print (f"\033[1;3;4;32m[✓]  {pwd}: is Correct Access Granted [✓]\033[0m")
+folders = ["admin","login","config","uploads","backup"]
+while True:
+    user_input = input("Enter target website: (exit to 0: ")
+    if user_input == "0":
+        print (f"\033[1;93m[~] Scanner Shutting Down [~]\033[0m")
         break
-    else:
-        print (f"\033[1;91m[×]Access Denied[×] {attempts}/5 \033[0m")
-        attempts += 1
+    for i in folders:
+        print (f"\033[1;3;32m[*] Cheking {user_input} {i}\033[0m")
         time.sleep(1)
 
-else:
-    print ("\033[1;93m[!]Aleart: Maximum  attempts reached system lock[!]\033[0m")
