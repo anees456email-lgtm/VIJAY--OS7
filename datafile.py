@@ -2,14 +2,18 @@
 import time
 import os
 print("\033[1;95m")
-os.system("figlet -f slant 'Safe Parameter'")
+os.system("figlet -f slant 'Dummy Tool'")
 print("\033[0m")
-def safe_target(ip_address):
-    print(f"\033[1;92m[*]Pinging >>> {ip_address}\033[0m")
-    time.sleep(1)
-safe_target("127,0,0,1")
-safe_target("10,11,12,13")
-safe_target("22,12,23,14")
-safe_target("16,12,32,12")
-safe_target("72,88,77,86")
-
+print("=" *60)
+def login_attack(username,password):
+    if username== "hunter07" and password == "1111":
+        print(f"\033[1;92m >>> username {username}: >>> password {password} Access Granted\033[0m")
+        time.sleep(1)
+    else:
+        print(f"\033[1;91m[×]wrong username {username}: password >>> {password} Access Decline\033[0m")
+        time.sleep(1)
+login_attack("admin123","7777")
+login_attack("ak","1234")
+login_attack("hunter007","4321")
+login_attack("hunter07","1111")
+login_attack("hunter","1122")
