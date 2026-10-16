@@ -3,37 +3,23 @@ import time
 import os
 #os.system("clear")
 print("\033[1;96m" + "="*50)
-print("\033[1;3;35m           ====== PYTHON BANK ATM ====== ")
+print("\033[1;3;35m  ====== DUMMY SYSTEM BYPASS SIMULATOR ======  ")
 print("\033[1;96m" + "="*50)
 print("\033[0m")
 print()
-secret_pin = 1234
-def login():
+import time
+secret_pin = "hunter77"
+def bypass_system():
     attempts = 0
     while attempts < 3:
-        user = int(input("Enter pin: "))
-        time.sleep(1)
+        guess = input("Enter Pin: ")
         attempts += 1
-        if user == secret_pin:
-            return True
+        time.sleep(1)
+        if guess == secret_pin:
+            return f"\033[1;92m>>> {guess}: password correct system access granted\033[0"
         else:
-            print(f"\033[1;91m>>> wrong pin attempts {attempts}/3\033[0m")
-#    print(f"\033[1;91m worng pin {attempts}/3\033[0.")
-#    return False
-def withdraw_money():
-    Balance = 5000
-    amount = int(input("Enter amount: "))
-    if amount > Balance:
-        print("\033[1;91m>>> Insufficient Funds!\033[0m")
-        time.sleep(1)
-    else:
-        new_Balance = Balance - amount
-        print(f"\033[1;92m>>> Transation Successful! your new Balance {new_Balance}\033[0m")
-        time.sleep(1)
-    return
-login_status = login()
-if login_status == True:
-    withdraw_money()
-else:
-    print("\033[1;93m>>> Too many wrong attempts card blocked\033[0m")
+            print (f"\033[1;91m>>> worng pin {attempts}/3\033[0m")
+    return "\033[1;91m>>> SYSTEM LOCKED\033[0m"
+result = bypass_system()
+print(result)
 
