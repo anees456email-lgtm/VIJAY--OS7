@@ -7,7 +7,7 @@ time.sleep(1)
 print("\033[1;96m" + "="*50)
 time.sleep(1)
 print()
-print("\033[1;3;35m      ​====== Authentication Handler ======  ")
+print("\033[1;3;35m      ​   ====== Path Discovery ======  ")
 time.sleep(1)
 print("\033[0m")
 print("\033[1;96m" + "="*50)
@@ -16,21 +16,20 @@ print("\033[1;96m" + "="*50)
 time.sleep(1)
 print("\033[0m")
 print()
-secret_password = 7777
-def crack_password(user_pin):
-    if user_pin == secret_password:
+def check_path(path_name):
+    "admin_panel"
+    if path_name == "admin_panel":
         return True
     else:
         return False
-while True:
-    print("\033[1;93m[*]Pin Access Control Engine Starting...\033[0m\n")
+wordlist = ["login","user","admin","dashbord","admin_panel"]
+for path in wordlist:
+    print("\033[1;93m>>> Trying path_name\033[0m")
     time.sleep(1)
-    pin = int(input("Enter pin: "))
-    time.sleep(1)
-    if crack_password(pin) == True:
-        print(f"\033[1;92m Access granted pin {pin}: correct\033[0m")
+    print()
+    if check_path(path):
+        print(f"\033[1;92m[✓] Success! path found {path}\033[0m")
         time.sleep(1)
-        break
     else:
-        print("\033[1;91m>>> worng password Try Again\033[0m")
+        print("\033[1;91m[×] Wrong path_name [×]\033[0m")
         time.sleep(1)
