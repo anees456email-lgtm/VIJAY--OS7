@@ -7,7 +7,7 @@ time.sleep(1)
 print("\033[1;94m" + "="*50)
 time.sleep(1)
 print()
-print("\033[1;3;35m      ====== Relay-Pwn Script  ======  ")
+print("\033[1;3;35m    ====== Threat-Level-Analyzer.py  ======  ")
 time.sleep(1)
 print("\033[0m")
 print("\033[1;94m" + "="*50)
@@ -16,19 +16,49 @@ print("\033[1;94m" + "="*50)
 time.sleep(1)
 print("\033[0m")
 print()
-def find_target():
-    return "192.168.1.105"
-def scan_port(ip):
-    print(f"\033[1;93m[!] Scanning target {ip}\033[0m \n")
-    time.sleep(1)
-    return 8080
-def launch_atack(ip,port):
-    print(f"\033[1;3;32m[+] Exploit Successfully [{ip}] on port > {port}\033[0m")
-    time.sleep(1)
-target = find_target()
-open_port = scan_port(target)
-launch_atack(target,open_port)
+def calculate_risk(failed_attempts):
+    return failed_attempts * 5
+def add_device_bonus(risk_score):
+    if risk_score >= 20:
+        return risk_score + 10
+    else:
+        return risk_score
+def classify_event(score):
+    if score >= 50:
+        return "High"
+    elif score >= 25:
+        return "Medium"
+    else:
+        return "Low"
+def run_analyzer(failed_attempts):
+    risk = calculate_risk(failed_attempts)
+    status = add_device_bonus(risk)
+    total = classify_event(status)
+    return total
+final = run_analyzer(6)
+print(f"\033[1;3;32m {final}\033[0m")
+time.sleep(1)
 
+def calculate_score(points):
+    return points * 3
+def add_bonus(score):
+    if score >= 20:
+        return score + 10
+    else:
+        return score
+def double_score(score):
+    return score * 2
+def run_player(points):
+   # basic_score = calculate_score(points)
+   # bonus_score = add_bonus(basic_score)
+   # final_score = double_score(bonus_score)
+   # return final_score
+#result = run_player(8)
+#print(f"\033[1;92m>>> {result}\033[0m")
+    final = double_score(add_bonus(calculate_score(points)))
+    return final
+result = run_player(8)
+print(f"\033[1;3;32m>>> {result}\033[0m")
 
 
 
