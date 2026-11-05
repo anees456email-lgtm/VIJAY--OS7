@@ -7,7 +7,7 @@ time.sleep(1)
 print("\033[1;96m" + "-"*50)
 time.sleep(1)
 print()
-print("\033[1;3;36m     ====== Dummy  Anti_Kill-Switch ======  ")
+print("\033[1;3;36m     ===== IDS Simulator with *args  ======  ")
 time.sleep(1)
 print("\033[0m")
 print("\033[1;96m" + "-"*50)
@@ -16,26 +16,22 @@ print("\033[1;96m" + "="*50)
 time.sleep(1)
 print("\033[0m")
 print()
-def Data_Exfiltration(target_folder,*file_size):
-    print("\033[1;93m[+] Program starting...\033[0m")
-    time.sleep(1)
-    for p in file_size:
-        if p > 500:
-#            continue
-            print(f"\033[1;3;4;32m--> Firewall Aleart high file: {p}\033[0m")
+def log_analyzer(server_name,*ip_address):
+    for ip in ip_address:
+        print("\033[1;3;36m[+] Cheking IP...\033[0m")
+        time.sleep(1)
+        if ip == "127.0.0.1":
+            print(f"\033[1;3;32m-->  {ip} local host is skipping...\033[0m")
             time.sleep(1)
             continue
-        elif p == 0:
-#            print(f"\033[1;41m corrupt/trap file: {p}\033[0m")
+        elif ip == "6.6.6.6":
+            time.sleep(0.05)
+            return f"\033[1;3;31m>>> Unknown Attacker! SYSTEM LOCKDOWN\033[0m"
 #            time.sleep(1)
-            return f"\033[1;41m corrupt/trap file: {p}\033[0m"
-#            break
         else:
-            print(f"\033[1;3;42m valid file {p}\033[0m")
+            print(f"\033[1;3;33m[*] Safe ip {ip}\033[0m")
             time.sleep(1)
-#final_result = Data_Exfiltration("system32") # (22,24,89,700,77,0,66)
-#print(final_result)
-#Data_Exfiltration("system32",10,50,90,22,25,89,27,77,700,1,22,44,110,0,9)
-result = Data_Exfiltration("system32",22,24,89,700,77,0,66,80)
+result = log_analyzer("Mainframe","8.8.8.8","111.90.11.6","127.0.0.1","666.767.7.3","6.6.6.6","675.33.22.1")
 print(result)
 time.sleep(1)
+#log_analyzer("Mainframe",8,8,8,8,55, 111,90,11,6, 127,0,0,1, 666,767,7,3, 6,6,6,6, 675,33,22,1)
