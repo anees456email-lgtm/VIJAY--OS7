@@ -7,7 +7,7 @@ time.sleep(1)
 print("\033[1;96m" + "-"*50)
 time.sleep(1)
 print()
-print("\033[1;3;36m     ===== IDS Simulator with *args  ======  ")
+print("\033[1;3;36m          =====  Mac_Analyzer *args  ======  ")
 time.sleep(1)
 print("\033[0m")
 print("\033[1;96m" + "-"*50)
@@ -16,22 +16,21 @@ print("\033[1;96m" + "="*50)
 time.sleep(1)
 print("\033[0m")
 print()
-def log_analyzer(server_name,*ip_address):
-    for ip in ip_address:
-        print("\033[1;3;36m[+] Cheking IP...\033[0m")
+def mac_analyzer(target_server,*mac_list):
+    print(f"\033[1;3;33m[+] Target Locked: {target_server}\033[0m\n")
+    time.sleep(1)
+    for mac in mac_list:
+        if mac == "AA:BB:CC:DD:EE:FF":
+           print("\033[1;3;32m VIP mac skipping...\033[0m")
+           time.sleep(1)
+           continue
+#           print(f"\033[1;3;33m--> Authenticating mac: {mac}\033[0m")
+#           time.sleep(1)
+        elif mac == "12:34:56:78:9A:BC":
+            time.sleep(1)
+            return "\033[1;91m[!] Aleart Unkown mac_address\033[0m"
+        print(f"\033[1;3;33m--> Authenticating mac:  {mac}\033[0m")
         time.sleep(1)
-        if ip == "127.0.0.1":
-            print(f"\033[1;3;32m-->  {ip} local host is skipping...\033[0m")
-            time.sleep(1)
-            continue
-        elif ip == "6.6.6.6":
-            time.sleep(0.05)
-            return f"\033[1;3;31m>>> Unknown Attacker! SYSTEM LOCKDOWN\033[0m"
-#            time.sleep(1)
-        else:
-            print(f"\033[1;3;33m[*] Safe ip {ip}\033[0m")
-            time.sleep(1)
-result = log_analyzer("Mainframe","8.8.8.8","111.90.11.6","127.0.0.1","666.767.7.3","6.6.6.6","675.33.22.1")
+result = mac_analyzer("main_router","00:1A:2B:3C:4D:5E","F8:1A:67:B2:99:C3","AA:BB:CC:DD:EE:FF","12:34:56:78:9A:BC","FF:FF:FF:FF","11:22:33:44:55")
 print(result)
 time.sleep(1)
-#log_analyzer("Mainframe",8,8,8,8,55, 111,90,11,6, 127,0,0,1, 666,767,7,3, 6,6,6,6, 675,33,22,1)
