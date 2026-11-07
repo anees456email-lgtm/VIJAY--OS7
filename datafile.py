@@ -7,7 +7,7 @@ time.sleep(1)
 print("\033[1;96m" + "-"*50)
 time.sleep(1)
 print()
-print("\033[1;3;36m          =====  Mac_Analyzer *args  ======  ")
+print("\033[1;3;36m         ===== ​Venom_DirBuster.py  ======  ")
 time.sleep(1)
 print("\033[0m")
 print("\033[1;96m" + "-"*50)
@@ -16,21 +16,29 @@ print("\033[1;96m" + "="*50)
 time.sleep(1)
 print("\033[0m")
 print()
-def mac_analyzer(target_server,*mac_list):
-    print(f"\033[1;3;33m[+] Target Locked: {target_server}\033[0m\n")
+def web_fuzzer(target_url,*directories,auth_token,proxy_mode):
+    print(f"\033[1;3;41m[*] Target Locked: {target_url}\033[0m")
     time.sleep(1)
-    for mac in mac_list:
-        if mac == "AA:BB:CC:DD:EE:FF":
-           print("\033[1;3;32m VIP mac skipping...\033[0m")
-           time.sleep(1)
-           continue
-#           print(f"\033[1;3;33m--> Authenticating mac: {mac}\033[0m")
-#           time.sleep(1)
-        elif mac == "12:34:56:78:9A:BC":
-            time.sleep(1)
-            return "\033[1;91m[!] Aleart Unkown mac_address\033[0m"
-        print(f"\033[1;3;33m--> Authenticating mac:  {mac}\033[0m")
+    if auth_token != "venom123":
         time.sleep(1)
-result = mac_analyzer("main_router","00:1A:2B:3C:4D:5E","F8:1A:67:B2:99:C3","AA:BB:CC:DD:EE:FF","12:34:56:78:9A:BC","FF:FF:FF:FF","11:22:33:44:55")
+        return "\033[1;3;31m[!] Invlide Token Connection Dropped\033[0m"
+    if proxy_mode == True:
+        print("\033[1;3;34m[+] Stealth Proxy Active:\033[0m")
+        time.sleep(1)
+    else:
+#        time.sleep(1)
+        print("\033[1;3;31m No Proxy Active\033[0m")
+        time.sleep(1)
+#        return "\033[1;3;31m[!] Invlide Token Connection Dropped\033[0m"
+    for i in directories:
+        if i == "robots.txt":
+            continue
+        elif i == "admin_panel":
+            time.sleep(1)
+            return f"\033[1;3;32m--> Jackpot found: {i}\033[0m"
+        else:
+            print(f"\033[1;3;33m--> Scanning: {target_url}/ {i}\033[0m")
+            time.sleep(1)
+result = web_fuzzer("[www.target.com]","images","robots.txt","css","admin_panel","jss",auth_token = "venom123",proxy_mode =True)
 print(result)
 time.sleep(1)
