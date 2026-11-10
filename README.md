@@ -1,7 +1,7 @@
 # VIJAY--OS7: Python Scripts & Ethical Hacking Lab 💻🛡️
 
 ## 📝 About This Repository
-Yeh repository mere Python programming, loop debugging, aur Termux par banaye gaye custom tools ka collection hai. Yahan main apne coding experiments, file handling, aur ethical hacking ke basic concepts test karta hu. Future mein aane wale saare scripts yahi add honge.
+Yeh repository mere Python programming, practice code, aur Termux par banaye gaye custom tools ka collection hai. Yahan main apne coding experiments, file handling, aur ethical hacking ke basic concepts test karta hu. Future mein aane wale saare scripts yahi add honge.
 
 ## ⚠️ UNIVERSAL DISCLAIMER: FOR EDUCATIONAL PURPOSES ONLY ⚠️
 
