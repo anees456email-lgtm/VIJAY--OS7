@@ -7,7 +7,7 @@ time.sleep(1)
 print("\033[1;96m" + "-"*50)
 time.sleep(1)
 print()
-print("\033[1;3;36m      ===== ​Node Health Scanner.py  ======  ")
+print("\033[1;3;36m      ===== ​Packet Analyzer.py  ======  ")
 time.sleep(1)
 print("\033[0m")
 print("\033[1;96m" + "-"*50)
@@ -16,24 +16,42 @@ print("\033[1;96m" + "="*50)
 time.sleep(1)
 print("\033[0m")
 print()
-status_codes = [200,200,404,500,200,700,244,552,777,875,542]
-def node_scanner(*nodes):
-    print("\033[1;3;35m Server Receiver Scanner Starting...\033[0m\n")
+def analyze_packet(*packets):
+    print("\033[1;3;30m[+] Packet Analyzer Engine...\033[0m")
     time.sleep(1)
-    print(f"\033[1;3;34m Total Nodes: {len(nodes)}\033[0m")
+    print("\033[1;90m" + "="*50)
     time.sleep(1)
-    for node in nodes:
-        if node == 404:
-            print(f"\033[1;3;31m>> Node {node}: Not Found!\033[0m")
+    print(f"\033[1;3;34m Total Packets Received: {len(packets)}\033[0m")
+    time.sleep(1)
+    print(f"\033[1;3;34m Max Packet Size: {max(packets)}\033[0m")
+    time.sleep(1)
+    print(f"\033[1;3;34m Total Packets Size: {sum(packets)}\033[0m")
+    time.sleep(1)
+    print("\033[0m")
+    time.sleep(1)
+    for packet in packets:
+        if packet > 1000:
+            print(f"\033[1;3;31m-> ALERT: Massive Packet {packet}: Detected! Blocking Traffic\033[0m")
             time.sleep(1)
-        elif node == 500:
-            print(f"\033[1;3;33m--> Node {node}: WARNING! Internal Server Error\033[0m")
-            time.sleep(1)
-        elif node == 777:
-            print(f"\033[1;3;32m[✓] Success Node {node}: is Active\033[0m")
-            time.sleep(1)
-            break
         else:
-            print(f"\033[1;3;36m[/] Normal Node: {node}\033[0m")
+            print(f"\033[1;3;32m>>> Normal Packet {packet}: Allowed\033[0m")
             time.sleep(1)
-node_scanner(*status_codes)
+while True:
+    print("\033[1;95m" +"="*50)
+    time.sleep(1)
+    print("\033[1;95m[1]:Scan Web Traffic| [2] Scan Database Traffic| Exit System:[0]\033[0m")
+    time.sleep(1)
+    choice = input("Enter option: ")
+    if choice == "1":
+        analyze_packet(120,50,1500,300)
+    elif choice == "2":
+        analyze_packet(2500,30,4000,80)
+    elif choice == "0":
+        print("\033[1;3;33m[-] System Shutting Down...\033[0m")
+        time.sleep(1)
+        break
+    else:
+        print("\033[1;3;31m!/] Invalid Command!\033[0m")
+        time.sleep(1)
+print("\033[1;93m" + "="*50)
+time.sleep(1)
