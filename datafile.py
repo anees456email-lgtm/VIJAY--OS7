@@ -7,7 +7,7 @@ time.sleep(1)
 print("\033[1;96m" + "-"*50)
 time.sleep(1)
 print()
-print("\033[1;3;36m      ===== ​Packet Analyzer.py  ======  ")
+print("\033[1;3;36m      ===== ​Score_Audit Analyzer.py  ======  ")
 time.sleep(1)
 print("\033[0m")
 print("\033[1;96m" + "-"*50)
@@ -16,42 +16,54 @@ print("\033[1;96m" + "="*50)
 time.sleep(1)
 print("\033[0m")
 print()
-def analyze_packet(*packets):
-    print("\033[1;3;30m[+] Packet Analyzer Engine...\033[0m")
+import time
+def security_command_center(*scores):
+    print("\033[1;3;30m[+] Score Analyzer Starting...\033[0m")
     time.sleep(1)
-    print("\033[1;90m" + "="*50)
+    total = sum(scores)
+    count = len(scores)
+    authorize = True
+    print(f"\033[1;3;33m[=] Total Scores: {total}\033[0m")
     time.sleep(1)
-    print(f"\033[1;3;34m Total Packets Received: {len(packets)}\033[0m")
+    print(f"\033[1;3;33m[/] Combined Score: {count}\033[0m")
     time.sleep(1)
-    print(f"\033[1;3;34m Max Packet Size: {max(packets)}\033[0m")
-    time.sleep(1)
-    print(f"\033[1;3;34m Total Packets Size: {sum(packets)}\033[0m")
-    time.sleep(1)
-    print("\033[0m")
-    time.sleep(1)
-    for packet in packets:
-        if packet > 1000:
-            print(f"\033[1;3;31m-> ALERT: Massive Packet {packet}: Detected! Blocking Traffic\033[0m")
+    round_no = 1
+    while round_no <= 2:
+        print(f"\033[1;3;35m[+] Audit Session Start {round_no}\033[0m")
+        time.sleep(1)
+        round_no += 1
+        for score in scores:
+            if (total >= 25 and count >= 4)or score >= 9:
+                print("\033[1;3;41m--> Priorty Alert\033[0m")
+                time.sleep(1)
+            else:
+                print("\033[1;3;33m[✓] Normal Priority\033[0m")
+                time.sleep(1)
+            if score >= 8:
+                print(f"\033[1;3;31m>> Score {score}: High\033[0m")
+                time.sleep(1)
+            elif score >= 5:
+                print(f"\033[1;3;33m>>> Score {score}: Medium\033[0m")
+                time.sleep(1)
+            else:
+                print(f"\033[1;3;33m--> Score {score}: Low\033[0m")
+                time.sleep(1)
+        if not authorize:
+            print("\033[1;3;35m[✓] Audit Blocked\033[0m")
             time.sleep(1)
         else:
-            print(f"\033[1;3;32m>>> Normal Packet {packet}: Allowed\033[0m")
+            print("\033[1;92m>>> Audit Approved\033[0m")
             time.sleep(1)
-while True:
-    print("\033[1;95m" +"="*50)
-    time.sleep(1)
-    print("\033[1;95m[1]:Scan Web Traffic| [2] Scan Database Traffic| Exit System:[0]\033[0m")
-    time.sleep(1)
-    choice = input("Enter option: ")
-    if choice == "1":
-        analyze_packet(120,50,1500,300)
-    elif choice == "2":
-        analyze_packet(2500,30,4000,80)
-    elif choice == "0":
-        print("\033[1;3;33m[-] System Shutting Down...\033[0m")
+        print("\033[1;3;45m| Audit Round Completed\033[0m")
         time.sleep(1)
-        break
-    else:
-        print("\033[1;3;31m!/] Invalid Command!\033[0m")
-        time.sleep(1)
-print("\033[1;93m" + "="*50)
-time.sleep(1)
+    print("\033[1;96m" "="*50)
+    time.sleep(1)
+    print("\033[1;3;36m Audit Mission Complate\033[0m")
+    time.sleep(1)
+    print("\033[1;96m" "="*50)
+    time.sleep(1)
+    print(f"\033[1;3;36m Total Scores {total}\033[0m")
+    time.sleep(1)
+    print(f"\033[1;3;36m Combined Score: {count}\033[0m")
+    time.sleep(1)
+security_command_center(8,3,6,2,9)
