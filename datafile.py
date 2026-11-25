@@ -7,7 +7,7 @@ time.sleep(1)
 print("\033[1;96m" + "—"*50)
 time.sleep(1)
 print()
-print("\033[1;3;36m          ===== ​target_audit.py  ======  ")
+print("\033[1;3;36m          ===== ​Target_Scanner.py  ======  ")
 time.sleep(1)
 print("\033[0m")
 print("\033[1;96m" + "—"*50)
@@ -16,36 +16,36 @@ print("\033[1;96m" + "—"*50)
 time.sleep(1)
 print("\033[0m")
 print()
-def audit_target(**info):
+def scanner_logger(ip,scan_type,*ports,**details):
     print()
+    print("\033[1;3;33m Starting Scanner...\033[0m")
     time.sleep(1)
-    print("\033[1;3;35m AUDIT INFO...\033[0m")
+    print(f"\033[1;3;31m Target Ip: {ip}\033[0m")
     time.sleep(1)
-    total_fields = len(info)
-    print(f"\033[1;3;34m Total Fields: {total_fields}\033[0m")
+    print(f"\033[1;3;35m Scan Type: {scan_type}\033[0m")
     time.sleep(1)
-    print("\033[1;96m" + "—" *50 + "\033[0m")
+    total_entries = len(details)
+    print(f"\033[1;3;34m Total Entries: {total_entries}\033[0m")
     time.sleep(1)
-    if total_fields == 0:
-        print("\033[1;3;31m No Data Found\033[0m")
+    if len(ports) == 0 and len(details) == 0:
+        print("\033[1;3;37m No ports or extra details\033[0m")
+        time.sleep(1)
+        print("\033[1;96m" + "_" *50 + "\033[0m")
         time.sleep(1)
         return
-    print()
-    if total_fields <= 2:
-        print("\033[1;3;33m Scan level basic\033[0m")
+    for port in ports:
+        if port == 8080:
+            print(f"\033[1;3;36m>>> Port {port} is Proxy\033[0m")
+            time.sleep(1)
+        elif port == 443:
+            print(f"\033[1;3;31m-> Port {port} is honeypot\033[0m")
+            time.sleep(1)
+            break
+        else:
+            print(f"\033[1;3;33m--> Port {port} is Normal\033[0m")
+            time.sleep(1)
+    for key,value in details.items():
+        print(f"\033[1;3;32m {key} --> {value}\033[0m")
         time.sleep(1)
-    else:
-        print("\033[1;3;32m Scan Level Detailed\033[0m")
-        time.sleep(1)
-    round_no = 0
-    for key,value in info.items():
-        round_no += 1
-        print(f"\033[1;3;36m Round {round_no} --> {key}: {value}\033[0m")
-        time.sleep(1)
-    target_ip = info.get("ip")
-    if target_ip is None:
-        print("\033[1;3;41m Alert: Target Ip Missing!\033[0m")
-        time.sleep(1)
-audit_target()
-audit_target(ip="127.0.0.1",port=80)
-audit_target(host_name="web-srv-01",port=443,ssl="Active",server="Apache")
+scanner_logger("127.0.0.1","Quick")
+scanner_logger("192.168.0.1","fast",21,43,22,3601,8080,77,443,5512,os="Linux",server="Nginx",status="Active")
