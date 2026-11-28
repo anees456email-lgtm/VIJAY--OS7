@@ -7,7 +7,7 @@ time.sleep(1)
 print("\033[1;96m" + "—"*50)
 time.sleep(1)
 print()
-print("\033[1;3;36m          ===== ​​Firewall Audit.py  ======  ")
+print("\033[1;3;36m          ===== ​​Server Audit.py  ======  ")
 time.sleep(1)
 print("\033[0m")
 print("\033[1;96m" + "—"*50)
@@ -16,39 +16,52 @@ print("\033[1;96m" + "—"*50)
 time.sleep(1)
 print("\033[0m")
 print()
-def firewall_auditor(**firewall_rules):
-    print("\033[1;3;33m Firewall Auditing Start...\033[0m")
+def server_audit(server,**settings):
+    print()
+    print("\033[1;3;35m Server Auditing Starting...\033[0m")
     time.sleep(1)
     print()
-    total_entries = len(firewall_rules)
-    count = 0
-    for service,rules in firewall_rules.items():
-        print(f"\033[1;3;36m Checking Service >>> {service}\033[0m")
+    total_entries = len(settings)
+    print(f"\033[1;3;42m Server: {server}\033[0m")
+    time.sleep(1)
+    if not settings:
+        time.sleep(0.05)
+        print("\033[1;3;37m No Settings Available\033[0m")
+        return
+    print()
+    alert = 0
+    for key,value in settings.items():
+        print(f"\033[1;3;32m {key} -> {value}\033[0m")
         time.sleep(1)
-        if rules == "Block":
-            print(f"\033[1;3;31m  {service} -> Blocked\033[0m")
+        if key == "root_login" and value == "on":
+            print("\033[1;3;31m Critical Alert\033[0m")
             time.sleep(1)
-            count += 1
-        elif rules == "Allow":
-            print(f"\033[1;3;32m Service: {rules}\033[0m")
+            alert += 1
+        elif key == "firewall" and value == "off":
+            print("\033[1;3;33m Very Critical Alert\033[0m")
             time.sleep(1)
-        elif rules == "Ignore":
-            print(f"\033[1;3;37m {service} >> is skipping\033[0m")
+            alert += 1
+        elif value == "outdated":
+            print("\033[1;3;33m Critical Alert\033[0m")
             time.sleep(1)
-            continue
-        elif rules == "Emergency_stop":
-            print(f"\033[1;3;41m {rules}\n Audit Status Inturrupted\033[0m")
+            alert += 1
+        elif value == "weak":
+            print("\033[1;3;41m Most Critical Alert\033[0m")
             time.sleep(1)
-            break
+            alert += 1
         else:
-            print("\033[1;3;33m REVREW REQUIRED\033[0m")
+            print(f"\033[1;3;36m Safe Setting\033[0m")
             time.sleep(1)
-    print("\033[1;95m" + "—" *50 + "\033[0m")
+    print("\033[1;96m" + "=" *50 + "\033[0m")
     time.sleep(1)
-    print(f"\033[1;3;35m Total Services: {total_entries}\033[0m")
+    print(f"\033[1;3;34m Total Entries: {total_entries}\033[0m")
     time.sleep(1)
-    print(f"\033[1;3;36m Total Blocked Entries: {count}\033[0m")
-    time.sleep(1)
-    print(f"\033[1;3;36m Audit Status Complated\033[0m")
-    time.sleep(1)
-firewall_auditor(ssh="Block",HTTPS="Allow",ftp="peview",Dns="Block",Telnet="Ignore",Smtp="Allow",Emergency="Emergency_stop",port=22,os="Lenux")
+    if alert == 0:
+        print(f"\033[1;3;4;32m Total Alert:({alert}) Server -> [{server}] Is Secure\033[0m")
+        time.sleep(1)
+    else:
+        print(f"\033[1;3;4;31m Total Alert:({alert}) Server >> [{server}] Is Risky\033[0m")
+        time.sleep(1)
+server_audit("Main_DB")
+server_audit("DB_Main",port=22,firewall="off",root_login="on",password="weak",software="outdated")
+server_audit("Ubuntu",firewall="on",root_login="off",password="strong",)
